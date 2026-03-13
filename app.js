@@ -340,8 +340,8 @@ function App() {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${key}`,
-          "HTTP-Referer": window.location.href,
-          "X-Title": "StudyMind",
+          "HTTP-Referer": "https://studymind.app",
+          "X-OpenRouter-Title": "StudyMind",
         },
         body: JSON.stringify({
           model: MODEL,
