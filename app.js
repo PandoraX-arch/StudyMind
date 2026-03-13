@@ -340,15 +340,17 @@ function App() {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${key}`,
-          "HTTP-Referer": "https://studymind.app",
+          "HTTP-Referer": "https://pandorax-arch.github.io/StudyMind/",
           "X-OpenRouter-Title": "StudyMind",
         },
         body: JSON.stringify({
           model: MODEL,
           stream: true,
           messages: [
-            { role: "system", content: activeMode.systemPrompt },
+            { role: "user", content: "[Instrucoes]: " + activeMode.systemPrompt + "\n\nEntendeu?" },
+            { role: "assistant", content: "Entendido! Estou pronto para ajudar." },
             ...history,
+            { role: "user", content: newUserContent },
           ],
         }),
       });
