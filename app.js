@@ -3,8 +3,8 @@
 //  Configuração da API: altere a linha abaixo
 // =============================================
 
-const OPENROUTER_API_KEY = "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"; // 👈 Substitua pela sua chave OpenRouter
-const MODEL = "GLM-4.5 Air";                        // Modelo padrão (pode trocar)
+const OPENROUTER_API_KEY = "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"; // 👈 Substitua pela sua chave OpenRouter
+const MODEL = "z-ai/glm-4.5-air:free";                // Modelo GLM-4.5 Air (gratuito)
 
 // =============================================
 //  MODOS DE ESTUDO
@@ -311,13 +311,10 @@ function App() {
       return { role: m.role, content: m.content };
     });
 
-    // New user turn
+    // New user turn (GLM-4.5 não suporta visão, envia só texto)
     let newUserContent;
     if (capturedBase64) {
-      newUserContent = [
-        { type: "image_url", image_url: { url: `data:image/jpeg;base64,${capturedBase64}` } },
-        { type: "text", text: userText || "O que há nesta imagem?" },
-      ];
+      newUserContent = `${userText || "Descreva esta imagem."}\n\n[Nota: imagem anexada, mas este modelo não suporta visão]`;
     } else {
       newUserContent = userText;
     }
